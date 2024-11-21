@@ -1,40 +1,33 @@
 ﻿#include <iostream>
 #include <time.h>
 #include <Windows.h>
-
-void compressArray(int* arr, int size);
+const int size = 20;
+void printArray(int* arr);
+void compressArray(int* arr);
 
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     srand(time(NULL));
-
-    const int size = 20;
-
     int arr[size];
-
     for (int i = 0; i < size; ++i) {
         arr[i] = rand() % 20 + 1;
     }
-
     std::cout << "До сжатия:    ";
-    for (int i = 0; i < size; ++i) {
-        std::cout << arr[i] << "  ";
-    }
-    std::cout << std::endl;
-
-    compressArray(arr, size);
-
+    printArray(arr);
+    compressArray(arr);
     std::cout << "После сжатия: ";
-    for (int i = 0; i < size; ++i) {
-        std::cout << arr[i] << "  ";
-    }
-    std::cout << std::endl;
-
+    printArray(arr);
     return 0;
 }
+void printArray(int* arr) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << "  ";
+    }
+    std::cout << std::endl;
+}
 
-void compressArray(int* arr, int size) {
+void compressArray(int* arr) {
     int index = 0;
 
     for (int i = 0; i < size; ++i) {
