@@ -2,6 +2,7 @@
 #include <time.h>
 #include <Windows.h>
 const int size = 20;
+void creatArray(int* arr);
 void printArray(int* arr);
 void compressArray(int* arr);
 
@@ -10,9 +11,7 @@ int main() {
     SetConsoleOutputCP(1251);
     srand(time(NULL));
     int arr[size];
-    for (int i = 0; i < size; ++i) {
-        arr[i] = rand() % 20 + 1;
-    }
+    creatArray(arr);
     std::cout << "До сжатия:    ";
     printArray(arr);
     compressArray(arr);
@@ -20,13 +19,18 @@ int main() {
     printArray(arr);
     return 0;
 }
+
+void creatArray(int* arr) {
+    for (int i = 0; i < size; ++i) {
+        arr[i] = rand() % size - size / 2;
+    }
+}
 void printArray(int* arr) {
     for (int i = 0; i < size; ++i) {
         std::cout << arr[i] << "  ";
     }
     std::cout << std::endl;
 }
-
 void compressArray(int* arr) {
     int index = 0;
 
